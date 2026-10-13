@@ -3,20 +3,12 @@ layout: default
 tags: home
 ---
 
-# Hi there, <br/> I'm Jonathon Belotti.
+# Hi there, <br/> I'm Ethan Kurian.
 
-### I'm a software engineer with a focus on data & platform engineering.
+### I'm a college student at Harvard University studying Human Developmental & Regerative Biology and Government with a secondary in Global Health & Health Policy.
 
-### Currently, I help build [Modal](https://modal.com/), a dream cloud platform for data & ML engineers.
 
 <br>
-
-I can usually be found programming or reading.
-I'm bullish on, and a big booster of:
-
-- [@bazelbuild](https://github.com/bazelbuild/) and generally using functional principles to keep things sane. I was a main contributor to Bazel's Python tooling, including [rules_python](https://github.com/bazel-contrib/rules_python).
-- Good old-fashioned books. Two recent favourites are [_The Dispossessed_](https://www.goodreads.com/book/show/13651.The_Dispossessed) and [_Shakespearean Tragedy_](https://www.goodreads.com/book/show/437318.Shakespearean_Tragedy).
-- [Effective Altruism](https://www.vox.com/future-perfect/2019/12/6/20992100/peter-singer-effective-altruism-lives-you-can-save-animal-liberation), for my sins. Helping, not harming. Doing, not having. Building, not consuming.
 
 <br>
 
