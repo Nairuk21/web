@@ -1,0 +1,316 @@
+<footer class="center">
+  <div class="footer-container">
+    <div class="footer-each">
+      <h5>
+        <a href="https://maps.app.goo.gl/7brEetzGTjWf7FWE7" target="_blank" rel="noopener noreferrer">
+          <span>Brooklyn</span><br><span>New York City</span><br><span>USA</span></span>
+        </a>
+      </h5>
+    </div>
+    <div class="footer-each">
+      <h5><a href="https://www.linkedin.com/in/jonathonbelotti/" target="_blank" rel="noopener noreferrer" alt="LinkedIn"><span>LinkedIn</span></a></h5>
+      <h5><a href="https://github.com/thundergolfer" target="_blank" rel="noopener noreferrer" alt="Github"><span>Github</span></a></h5>
+      <h5><a href="https://twitter.com/jonobelotti_IO" target="_blank" rel="noopener noreferrer" alt="Twitter"><span>Twitter</span></a></h5>
+    </div>
+  </div>
+</footer>
+
+<style>
+
+body.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.site .site-wrap {
+    flex: 1;
+}
+
+footer {
+    margin-bottom: 30px;
+    visibility: visible;
+    -webkit-transform: translateY(0) scale(1);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+    transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+}
+
+footer .footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .footer-container .footer-each {
+    float: left;
+    display: block;
+    margin: 0 2%;
+    width: 19em;
+}
+
+footer .footer-each a {
+  text-decoration: none;
+  background-image: none;
+  color: #000;
+  font-weight: 300;
+  word-wrap: normal;
+}
+
+footer .footer-each a:active, footer .footer-each a:hover {
+    outline-width: 0;
+}
+
+.footer-each span, footer, sub, sup {
+    position: relative;
+}
+
+.footer-each span:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #000;
+    transition: .4s;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.footer-each a:hover span:before {
+    content: '';
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+}
+
+@media screen and (max-width: 1000px) {
+  footer h5 {
+    font-size: 1.8em;
+  }
+}
+</style>
+
+{% if site.enable_anchorjs %}<!-- AnchorJS: deferred so the request doesn't block parsing.
+     The init script also waits for DOMContentLoaded so anchors is defined before use. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.0.0/anchor.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        anchors.options.visible = 'hover';
+        anchors.options.placement = 'left';
+        anchors.add('article h2, article h3, article h5, article h5, article h6');
+    });
+</script>{% endif %}
+{% if page.side_footnotes %}
+<script>
+(function() {
+    function footnoteIdFromHref(href) {
+        if (!href || href.charAt(0) !== '#') {
+            return null;
+        }
+
+        return href.slice(1);
+    }
+
+    function makeSideFootnote(ref, footnote, index) {
+        var note = document.createElement('span');
+        var content = footnote.cloneNode(true);
+        var backlinks = content.querySelectorAll('.reversefootnote');
+        var referenceContainer = ref.closest('sup') || ref;
+        var noteContent = '';
+
+        Array.prototype.forEach.call(backlinks, function(backlink) {
+            backlink.parentNode.removeChild(backlink);
+        });
+
+        if (content.children.length === 1 && content.firstElementChild.tagName.toLowerCase() === 'p') {
+            noteContent = content.firstElementChild.innerHTML;
+        } else {
+            noteContent = content.innerHTML;
+        }
+
+        note.className = 'side-footnote';
+        note.id = 'side-' + footnote.id;
+        note.setAttribute('role', 'note');
+        note.innerHTML = '<span class="side-footnote__number">' + (index + 1) + '</span> ' + noteContent;
+
+        ref.setAttribute('aria-controls', note.id);
+        ref.setAttribute('aria-expanded', 'false');
+
+        referenceContainer.parentNode.insertBefore(note, referenceContainer.nextSibling);
+
+        return note;
+    }
+
+    function initSideFootnotes() {
+        var article = document.querySelector('.post-content.has-side-footnotes');
+        var wideScreen = window.matchMedia('(min-width: 78em)');
+        var activeNote = null;
+
+        if (!article) {
+            return;
+        }
+
+        var refs = article.querySelectorAll('a.footnote[href^="#"]');
+
+        Array.prototype.forEach.call(refs, function(ref, index) {
+            var footnoteId = footnoteIdFromHref(ref.getAttribute('href'));
+            var footnote = footnoteId && document.getElementById(footnoteId);
+
+            if (!footnote) {
+                return;
+            }
+
+            var note = makeSideFootnote(ref, footnote, index);
+
+            ref.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                if (wideScreen.matches) {
+                    return;
+                }
+
+                if (activeNote && activeNote !== note) {
+                    activeNote.classList.remove('is-open');
+                    if (activeNote.controlRef) {
+                        activeNote.controlRef.setAttribute('aria-expanded', 'false');
+                    }
+                }
+
+                var shouldOpen = !note.classList.contains('is-open');
+                note.classList.toggle('is-open', shouldOpen);
+                ref.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+                note.controlRef = ref;
+                activeNote = shouldOpen ? note : null;
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!activeNote || article.contains(event.target)) {
+                return;
+            }
+
+            activeNote.classList.remove('is-open');
+            if (activeNote.controlRef) {
+                activeNote.controlRef.setAttribute('aria-expanded', 'false');
+            }
+            activeNote = null;
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key !== 'Escape' || !activeNote) {
+                return;
+            }
+
+            activeNote.classList.remove('is-open');
+            if (activeNote.controlRef) {
+                activeNote.controlRef.setAttribute('aria-expanded', 'false');
+                activeNote.controlRef.focus();
+            }
+            activeNote = null;
+        });
+
+        article.classList.add('is-side-footnotes-ready');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSideFootnotes);
+    } else {
+        initSideFootnotes();
+    }
+})();
+</script>
+{% endif %}
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+
+{% if page.tags contains 'home' %}
+<!-- Punch Tape SVG Generator -->
+<div id="punch-tape-container" style="width: 100%; height: 150px; margin-top: 30px; pointer-events: none; background: #f8f6ef;"></div>
+<script>
+(function() {
+    function initPunchTape() {
+        const container = document.getElementById('punch-tape-container');
+        if (!container) {
+            console.error('Punch tape container not found');
+            return;
+        }
+        
+        const dotSize = 12;
+        const spacing = 30;
+        const rowHeight = 15;
+        const numRows = 10;
+        /* Seeded random number generator */
+        function seededRandom(seed) {
+            let state = seed;
+            return function() {
+                state = (state * 1664525 + 1013904223) % 4294967296;
+                return state / 4294967296;
+            };
+        }
+        
+        function generatePunchTape() {
+            const random = seededRandom(42);
+            const width = window.innerWidth;
+            const numCols = Math.ceil(width / spacing);
+            const height = numRows * rowHeight;
+            
+            let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
+            
+            for (let row = 0; row < numRows; row++) {
+                const y = row * rowHeight + rowHeight / 2;
+                const currentDotSize = (row === 3) ? dotSize * 0.7 : dotSize;
+                
+                for (let col = 0; col < numCols; col++) {
+                    const x = col * spacing + spacing / 2;
+                    let showDot = true;
+                    
+                    /* Apply dropout patterns based on row */
+                    if (row === 0) {
+                        /* Row 1: 40% dropout */
+                        showDot = random() > 0.4;
+                    } else if (row === 1 || row === 2) {
+                        /* Rows 2-3: 60% dropout */
+                        showDot = random() > 0.6;
+                    } else if (row === 3) {
+                        /* Row 4: Guideline, no dropout */
+                        showDot = true;
+                    } else if (row === 4) {
+                        /* Row 5: 90% dropout */
+                        showDot = random() > 0.9;
+                    } else if (row === 5) {
+                        /* Row 6: Like row 3 (60% dropout) */
+                        showDot = random() > 0.6;
+                    } else if (row === 6 || row === 7) {
+                        /* Rows 7-8: Blocks of 4 or 10 dots */
+                        const blockSize = random() > 0.5 ? 4 : 10;
+                        const gapSize = Math.floor(random() * 3) + 2;
+                        const position = col % (blockSize + gapSize);
+                        showDot = position < blockSize;
+                    } else if (row === 8 || row === 9) {
+                        showDot = random() > 0.6;
+                    }
+                    
+                    if (showDot) {
+                        svg += `<circle cx="${x}" cy="${y}" r="${currentDotSize / 2}" fill="#000" opacity="0.3"/>`;
+                    }
+                }
+            }
+            
+            svg += '</svg>';
+            container.innerHTML = svg;
+        }
+        
+        generatePunchTape();
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(generatePunchTape, 250);
+        });
+    }
+    
+    initPunchTape();
+})();
+</script>
+{% endif %}

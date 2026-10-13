@@ -1,0 +1,269 @@
+
+.posts {
+  margin: 0;
+}
+
+.posts .post {
+  background-color: #f8f6ef;
+  margin-bottom: 0.75em;
+  border-bottom: thin solid #f3f3f3;
+}
+
+.posts .post:last-child {
+  border-bottom: none;
+  margin-bottom: .375em;
+  padding-bottom: 0;
+}
+
+.post-link .post-title {
+  margin-top: 0;
+  font-family: var(--font-new-york);
+  font-weight: 600;
+  color: $black;
+}
+
+.post-header h1 {
+  font-family: var(--font-new-york);
+  font-weight: 700;
+}
+
+.post-content {
+  font-weight: 400;
+}
+
+// Faint vertical rules that bound the article column, à la brandur.org.
+// The text measure is preserved; the lines sit just outside it and begin at
+// the article body (i.e. below the title/meta header), and any horizontal
+// rule is stretched so it meets the lines exactly.
+$post-gutter: 2rem;
+$post-rule-color: rgba(53, 53, 52, 0.12);
+
+@media screen and (min-width: 52em) {
+  .post-page .measure {
+    padding-left: $post-gutter;
+    padding-right: $post-gutter;
+  }
+
+  .post-page .post-body {
+    position: relative;
+  }
+
+  .post-page .post-body::before,
+  .post-page .post-body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: $post-rule-color;
+  }
+
+  .post-page .post-body::before {
+    left: -$post-gutter;
+  }
+
+  .post-page .post-body::after {
+    right: -$post-gutter;
+  }
+
+  .post-page .measure hr {
+    margin-left: -$post-gutter;
+    margin-right: -$post-gutter;
+  }
+}
+
+.abilene-hero {
+  margin: 0 0 2rem;
+}
+
+.abilene-hero__frame {
+  --hero-reveal: 50%;
+
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+  background: #1d1a16;
+  aspect-ratio: 3 / 2;
+}
+
+.abilene-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.abilene-hero__beautiful {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--hero-reveal)) 0 0);
+  overflow: hidden;
+  animation: abilene-hero-reveal 20s ease-in-out infinite alternate;
+  transition: clip-path 160ms ease-out;
+  will-change: clip-path;
+}
+
+.abilene-hero__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--hero-reveal);
+  width: 3px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.35);
+  animation: abilene-hero-handle 20s ease-in-out infinite alternate;
+  transition: left 160ms ease-out;
+}
+
+.abilene-hero__frame.is-interacting .abilene-hero__beautiful,
+.abilene-hero__frame.is-interacting .abilene-hero__handle {
+  animation: none;
+}
+
+.abilene-hero figcaption,
+.post-image figcaption {
+  margin-top: 0.5rem;
+  color: #7a7a7a;
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.post-content.has-side-footnotes {
+  position: relative;
+  overflow: visible;
+}
+
+.post-content.has-side-footnotes.is-side-footnotes-ready .footnotes {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.post-content.has-side-footnotes a.footnote {
+  cursor: pointer;
+}
+
+.side-footnote {
+  display: none;
+}
+
+.side-footnote__number {
+  font-feature-settings: "tnum";
+  font-size: 0.72em;
+  font-weight: 700;
+  vertical-align: super;
+}
+
+.side-footnote p {
+  margin: 0;
+}
+
+@media screen and (min-width: 78em) {
+  .post-content.has-side-footnotes .side-footnote {
+    position: absolute;
+    left: calc(100% + 3rem);
+    display: block;
+    width: 16rem;
+    color: #7a7a7a;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    text-align: left;
+    transform: translateY(-0.1rem);
+  }
+
+  .post-content.has-side-footnotes .side-footnote__number {
+    margin-right: 0.2rem;
+  }
+}
+
+@media screen and (max-width: 77.99em) {
+  .post-content.has-side-footnotes .side-footnote {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin-top: 0.35rem;
+    padding: 0.75rem 0.85rem;
+    color: $black;
+    background: #fffdf7;
+    border: 1px solid rgba(53, 53, 52, 0.14);
+    box-shadow: 0 0.5rem 1.5rem rgba(53, 53, 52, 0.16);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .post-content.has-side-footnotes .side-footnote.is-open {
+    display: block;
+  }
+}
+
+@keyframes abilene-hero-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes abilene-hero-handle {
+  from {
+    left: 0%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+.post-footer {
+  @extend .italic;
+
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.post-footer .avatar {
+  margin: 2rem 0;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.meta,
+.post-meta {
+  width: auto;
+  font-weight: 300;
+  margin: 0;
+  padding: .25em 0;
+  color: #7a7a7a;
+}
+
+.post-meta-popular-tag {
+  margin-left: 0.5em;
+  color: white;
+  background-color: $blue;
+  font-family: $monospace-font-family;
+  font-size: 0.75em;
+  text-align: center;
+  text-transform: lowercase;
+  padding: 0.2em 0.4em;
+  vertical-align: middle;
+}
+
+.related-post-title {
+  border-bottom: thin solid #f3f3f3;
+}
+
+.relatedPosts h2 {
+  font-family: var(--font-new-york);
+}

@@ -1,0 +1,133 @@
+pre,
+pre code {
+  background-color: transparent;
+  border-radius: $pre-border-radius;
+}
+
+pre,
+code {
+  font-family: $monospace-font-family;
+  font-size: 0.95em;
+}
+
+code {
+  color: #666666;
+}
+
+pre {
+  padding: 1.125em;
+  line-height: 1.11;
+  overflow-x: scroll;
+  margin-bottom: 0.88em;
+  background-color: $pre-background-color;
+}
+
+.highlight .p {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+pre {
+    counter-reset: line-numbering;
+    white-space: pre;
+    overflow-x: auto;
+    word-break: inherit;
+    word-wrap: inherit;
+}
+
+pre a {
+    background-image: none;
+}
+
+pre a::before {
+  content: counter(line-numbering);
+  counter-increment: line-numbering;
+  padding-right: 1em; /* space after numbers */
+  width: 25px;
+  text-align: right;
+  opacity: 0.7;
+  display: inline-block;
+  color: $light-gray;
+  margin-right: 16px;
+  font-size: 13px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+pre a:first-of-type::before {
+  padding-top: 10px;
+}
+
+pre a:last-of-type::before {
+  padding-bottom: 10px;
+}
+
+pre a:only-of-type::before {
+  padding: 10px;
+}
+
+// Code copy button styles
+.code-block-wrapper {
+  position: relative;
+  margin-bottom: 0.88em;
+}
+
+.code-block-wrapper pre {
+  margin-bottom: 0;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 10;
+}
+
+.code-block-wrapper:hover .copy-code-button {
+  opacity: 1;
+}
+
+.copy-code-button:hover {
+  background-color: #fff;
+  border-color: #999;
+}
+
+.copy-code-button:active {
+  transform: scale(0.95);
+}
+
+.copy-code-button.copied {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+.copy-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}

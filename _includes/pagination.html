@@ -1,0 +1,225 @@
+<div class="pagination clearfix mb1">
+  <div class="left">
+    {% if paginator.previous_page %}
+      {% if paginator.page == 2 %}
+        <a href="{{ site.baseurl }}/blog/" aria-label="Previous page">
+          <span class="left-circle-arrow">
+            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <!-- Arrow stem (three rows of dots) -->
+              <!-- Top row -->
+              <circle cx="30" cy="24" r="2" fill="#000"/>
+              <circle cx="36" cy="24" r="2" fill="#000"/>
+              <circle cx="48" cy="24" r="2" fill="#000"/>
+              <circle cx="54" cy="24" r="2" fill="#000"/>
+              <!-- Middle row (smaller dots) -->
+              <circle cx="24" cy="32" r="1.5" fill="#000"/>
+              <circle cx="30" cy="32" r="1.5" fill="#000"/>
+              <circle cx="36" cy="32" r="1.5" fill="#000"/>
+              <circle cx="42" cy="32" r="1.5" fill="#000"/>
+              <circle cx="48" cy="32" r="1.5" fill="#000"/>
+              <circle cx="54" cy="32" r="1.5" fill="#000"/>
+              <!-- Bottom row -->
+              <circle cx="30" cy="40" r="2" fill="#000"/>
+              <circle cx="36" cy="40" r="2" fill="#000"/>
+              <circle cx="42" cy="40" r="2" fill="#000"/>
+              <circle cx="48" cy="40" r="2" fill="#000"/>
+              <circle cx="54" cy="40" r="2" fill="#000"/>
+              <!-- Arrowhead < shape (larger to match 3-row stem) -->
+              <circle cx="12" cy="32" r="2" fill="#000"/>
+              <circle cx="18" cy="24" r="2" fill="#000"/>
+              <circle cx="18" cy="32" r="1.5" fill="#000"/>
+              <circle cx="18" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="16" r="2" fill="#000"/>
+              <circle cx="24" cy="24" r="2" fill="#000"/>
+              <circle cx="24" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="48" r="2" fill="#000"/>
+            </svg>
+          </span>
+        </a>
+      {% else %}
+        <a href="{{ paginator.previous_page_path }}" aria-label="Previous page">
+          <span class="left-circle-arrow">
+            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <!-- Arrow stem (three rows of dots) -->
+              <!-- Top row -->
+              <circle cx="30" cy="24" r="2" fill="#000"/>
+              <circle cx="36" cy="24" r="2" fill="#000"/>
+              <circle cx="48" cy="24" r="2" fill="#000"/>
+              <circle cx="54" cy="24" r="2" fill="#000"/>
+              <!-- Middle row (smaller dots) -->
+              <circle cx="24" cy="32" r="1.5" fill="#000"/>
+              <circle cx="30" cy="32" r="1.5" fill="#000"/>
+              <circle cx="36" cy="32" r="1.5" fill="#000"/>
+              <circle cx="42" cy="32" r="1.5" fill="#000"/>
+              <circle cx="48" cy="32" r="1.5" fill="#000"/>
+              <circle cx="54" cy="32" r="1.5" fill="#000"/>
+              <!-- Bottom row -->
+              <circle cx="30" cy="40" r="2" fill="#000"/>
+              <circle cx="36" cy="40" r="2" fill="#000"/>
+              <circle cx="42" cy="40" r="2" fill="#000"/>
+              <circle cx="48" cy="40" r="2" fill="#000"/>
+              <circle cx="54" cy="40" r="2" fill="#000"/>
+              <!-- Arrowhead < shape (larger to match 3-row stem) -->
+              <circle cx="12" cy="32" r="2" fill="#000"/>
+              <circle cx="18" cy="24" r="2" fill="#000"/>
+              <circle cx="18" cy="32" r="1.5" fill="#000"/>
+              <circle cx="18" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="16" r="2" fill="#000"/>
+              <circle cx="24" cy="24" r="2" fill="#000"/>
+              <circle cx="24" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="48" r="2" fill="#000"/>
+            </svg>
+          </span>
+        </a>
+      {% endif %}
+    {% else %}
+        <span class="left-circle-arrow arrow-disabled" role="link" aria-disabled="true" aria-label="Previous page (unavailable)">
+            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <!-- Arrow stem (three rows of dots) -->
+              <!-- Top row -->
+              <circle cx="30" cy="24" r="2" fill="#000"/>
+              <circle cx="36" cy="24" r="2" fill="#000"/>
+              <circle cx="48" cy="24" r="2" fill="#000"/>
+              <circle cx="54" cy="24" r="2" fill="#000"/>
+              <!-- Middle row (smaller dots) -->
+              <circle cx="24" cy="32" r="1.5" fill="#000"/>
+              <circle cx="30" cy="32" r="1.5" fill="#000"/>
+              <circle cx="36" cy="32" r="1.5" fill="#000"/>
+              <circle cx="42" cy="32" r="1.5" fill="#000"/>
+              <circle cx="48" cy="32" r="1.5" fill="#000"/>
+              <circle cx="54" cy="32" r="1.5" fill="#000"/>
+              <!-- Bottom row -->
+              <circle cx="30" cy="40" r="2" fill="#000"/>
+              <circle cx="36" cy="40" r="2" fill="#000"/>
+              <circle cx="42" cy="40" r="2" fill="#000"/>
+              <circle cx="48" cy="40" r="2" fill="#000"/>
+              <circle cx="54" cy="40" r="2" fill="#000"/>
+              <!-- Arrowhead < shape (larger to match 3-row stem) -->
+              <circle cx="12" cy="32" r="2" fill="#000"/>
+              <circle cx="18" cy="24" r="2" fill="#000"/>
+              <circle cx="18" cy="32" r="1.5" fill="#000"/>
+              <circle cx="18" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="16" r="2" fill="#000"/>
+              <circle cx="24" cy="24" r="2" fill="#000"/>
+              <circle cx="24" cy="40" r="2" fill="#000"/>
+              <circle cx="24" cy="48" r="2" fill="#000"/>
+            </svg>
+        </span>
+    {% endif %}
+  </div>
+  <div class="right">
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path }}" aria-label="Next page">
+          <span class="right-circle-arrow">
+            <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <!-- Arrow stem (three rows of dots) -->
+              <!-- Top row -->
+              <circle cx="10" cy="24" r="2" fill="#000"/>
+              <circle cx="16" cy="24" r="2" fill="#000"/>
+              <circle cx="22" cy="24" r="2" fill="#000"/>
+              <circle cx="28" cy="24" r="2" fill="#000"/>
+              <circle cx="34" cy="24" r="2" fill="#000"/>
+              <circle cx="40" cy="24" r="2" fill="#000"/>
+              <circle cx="46" cy="24" r="2" fill="#000"/>
+              <!-- Middle row (smaller dots) -->
+              <circle cx="10" cy="32" r="1.5" fill="#000"/>
+              <circle cx="16" cy="32" r="1.5" fill="#000"/>
+              <circle cx="22" cy="32" r="1.5" fill="#000"/>
+              <circle cx="28" cy="32" r="1.5" fill="#000"/>
+              <circle cx="34" cy="32" r="1.5" fill="#000"/>
+              <circle cx="40" cy="32" r="1.5" fill="#000"/>
+              <!-- Bottom row -->
+              <circle cx="10" cy="40" r="2" fill="#000"/>
+              <circle cx="28" cy="40" r="2" fill="#000"/>
+              <circle cx="34" cy="40" r="2" fill="#000"/>
+              <!-- Arrowhead > shape (larger to match 3-row stem) -->
+              <circle cx="52" cy="32" r="2" fill="#000"/>
+              <circle cx="46" cy="32" r="1.5" fill="#000"/>
+              <circle cx="46" cy="40" r="2" fill="#000"/>
+              <circle cx="40" cy="16" r="2" fill="#000"/>
+              <circle cx="40" cy="40" r="2" fill="#000"/>
+              <circle cx="40" cy="48" r="2" fill="#000"/>
+            </svg>
+          </span>
+      </a>
+    {% else %}
+        <span class="right-circle-arrow arrow-disabled" role="link" aria-disabled="true" aria-label="Next page (unavailable)">
+          <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <!-- Arrow stem (two rows of dots) -->
+              <circle cx="10" cy="28" r="2" fill="#000"/>
+              <circle cx="16" cy="28" r="2" fill="#000"/>
+              <circle cx="22" cy="28" r="2" fill="#000"/>
+              <circle cx="28" cy="28" r="2" fill="#000"/>
+              <circle cx="34" cy="28" r="2" fill="#000"/>
+              <circle cx="10" cy="36" r="2" fill="#000"/>
+              <circle cx="16" cy="36" r="2" fill="#000"/>
+              <circle cx="22" cy="36" r="2" fill="#000"/>
+              <circle cx="28" cy="36" r="2" fill="#000"/>
+              <circle cx="34" cy="36" r="2" fill="#000"/>
+              <!-- Arrowhead > shape on grid -->
+              <circle cx="52" cy="32" r="2" fill="#000"/>
+              <circle cx="46" cy="28" r="2" fill="#000"/>
+              <circle cx="46" cy="36" r="2" fill="#000"/>
+              <circle cx="40" cy="24" r="2" fill="#000"/>
+              <circle cx="40" cy="40" r="2" fill="#000"/>
+          </svg>
+        </span>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.pagination {
+  margin-top: 2em;
+}
+
+a {
+  display: inline-block;
+}
+
+.left-circle-arrow {
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  border: none;
+  transition: all .2s ease-in-out;
+}
+
+.left-circle-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.left-circle-arrow:hover {
+  transform: scale(1.1);
+}
+
+
+.right-circle-arrow {
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  border: none;
+  transition: all .2s ease-in-out;
+}
+
+.right-circle-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.right-circle-arrow:hover {
+  transform: scale(1.1);
+}
+
+.arrow-disabled {
+  opacity: 0.3;
+}
+
+</style>
